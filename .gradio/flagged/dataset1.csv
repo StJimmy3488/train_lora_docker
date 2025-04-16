@@ -1,0 +1,83 @@
+Upload Images,LoRA Name,Trigger Word/Sentence (Optional),Steps,Learning Rate,LoRA Rank,Model Type,Low VRAM Mode,"Sample Prompts (Optional, comma-separated)",Advanced Options (YAML),output,timestamp
+"["".gradio\\flagged\\Upload Images\\f60d99e93ac4baf4a1fb\\output_frame3114.png"", "".gradio\\flagged\\Upload Images\\3f012f2c3ef495f2993d\\output_frame2967.png"", "".gradio\\flagged\\Upload Images\\0c3ef8876f4d9df74d61\\output_frame2854.png"", "".gradio\\flagged\\Upload Images\\3fc355b89ca46d102d43\\output_frame2726.png"", "".gradio\\flagged\\Upload Images\\ca84e599ad67ecffd164\\output_frame2676.png""]",test,,1000,0.0004,16,dev,true,,"device: cuda:0
+model:
+  is_flux: true
+  quantize: true
+  name_or_path: C:\Users\syntxbench\Desktop\fluxtrainer\ostris\ai-toolkit\FLUX.1-dev
+network:
+  linear: 16 #it will overcome the 'rank' parameter
+  linear_alpha: 16 #you can have an alpha different than the ranking if you'd like
+  type: lora
+  network_kwargs:
+    only_if_contains:
+      - ""transformer.single_transformer_blocks.10.""
+      - ""transformer.single_transformer_blocks.25.""
+sample:
+      sampler: flowmatch
+      sample_every: 1000
+      width: 1024
+      height: 1024
+      prompts:
+      - person in bustling cafe
+save:
+  dtype: float16
+  hf_private: true
+  max_step_saves_to_keep: 4
+  push_to_hub: true
+  save_every: 10000
+train:
+  steps: 100
+  batch_size: 1
+  dtype: bf16
+  ema_config:
+    ema_decay: 0.99
+    use_ema: true
+  gradient_accumulation_steps: 1
+  gradient_checkpointing: true
+  lr: 1e-3
+  skip_first_sample: true
+  noise_scheduler: flowmatch 
+  optimizer: adamw8bit #options: prodigy, dadaptation, adamw, adamw8bit, lion, lion8bit
+  train_text_encoder: false #probably doesn't work for flux
+  train_unet: true","{""status"": ""error"", ""message"": ""No module named 'ipadapter.ip_adapter'""}",2025-02-03 12:06:06.282694
+"["".gradio\\flagged\\Upload Images\\730b8a45625c17115a36\\output_frame3114.png"", "".gradio\\flagged\\Upload Images\\813edd2f31edbf9ce7d0\\output_frame2967.png"", "".gradio\\flagged\\Upload Images\\bb5ed70415471099a6e4\\output_frame2854.png"", "".gradio\\flagged\\Upload Images\\67b1c44f7a5a22e0a9a0\\output_frame2726.png"", "".gradio\\flagged\\Upload Images\\de0e5038c179be4b24c9\\output_frame2676.png""]",test_nadeus_ok,ew,1000,0.0004,16,dev,true,,"device: cuda:0
+model:
+  is_flux: true
+  quantize: true
+  name_or_path: C:\Users\syntxbench\Desktop\fluxtrainer\ostris\ai-toolkit\FLUX.1-dev
+network:
+  linear: 16 #it will overcome the 'rank' parameter
+  linear_alpha: 16 #you can have an alpha different than the ranking if you'd like
+  type: lora
+  network_kwargs:
+    only_if_contains:
+      - ""transformer.single_transformer_blocks.10.""
+      - ""transformer.single_transformer_blocks.25.""
+sample:
+      sampler: flowmatch
+      sample_every: 1000
+      width: 1024
+      height: 1024
+      prompts:
+      - person in bustling cafe
+save:
+  dtype: float16
+  hf_private: true
+  max_step_saves_to_keep: 4
+  push_to_hub: true
+  save_every: 10000
+train:
+  steps: 100
+  batch_size: 1
+  dtype: bf16
+  ema_config:
+    ema_decay: 0.99
+    use_ema: true
+  gradient_accumulation_steps: 1
+  gradient_checkpointing: true
+  lr: 1e-3
+  skip_first_sample: true
+  noise_scheduler: flowmatch 
+  optimizer: adamw8bit #options: prodigy, dadaptation, adamw, adamw8bit, lion, lion8bit
+  train_text_encoder: false #probably doesn't work for flux
+  train_unet: true","{""status"": ""error"", ""message"": ""'NoneType' object is not callable""}",2025-02-03 12:18:26.603651

@@ -1,7 +1,7 @@
 torch
 torchvision
 safetensors
-git+https://github.com/huggingface/diffusers.git
+diffusers==0.32.2
 transformers
 lycoris-lora==1.8.3
 flatten_json
@@ -33,3 +33,5 @@ huggingface_hub
 peft
 gradio
 python-slugify
+boto3==1.35.99
+python-dotenv

@@ -1,0 +1,26 @@
+server {
+    listen 7860;
+
+    location / {
+    proxy_pass http://localhost:7860;  # Ensure this matches your application port
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_read_timeout 3600s;
+    proxy_send_timeout 3600s;
+    proxy_connect_timeout 3600s;
+    # Buffers for WebSocket
+    proxy_buffering off;
+    }
+    location /output {
+        alias /ComfyUI/output;  # Serve files from this directory
+        autoindex on;                     # Enable directory listing
+        autoindex_exact_size off;         # Show file sizes in a human-readable format
+        autoindex_localtime on;           # Show file modification times in the server's local time
+
+    }
+}
